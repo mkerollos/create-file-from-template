@@ -28,7 +28,7 @@ jobs:
       with:
         script: |
           const { USERNAME } = process.env
-          const user_info = github.rest.users.getByUsername(USERNAME)
+          const user_info = github.rest.users.getByUsername({username: USERNAME})
           console.log(user_info)
     - name: Commit and push changes
       run: |
