@@ -17,9 +17,10 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v3
     - name: Create setting
+      env:
+        GITHUB_CONTEXT: ${{ toJSON(github) }}
       run: |
-        echo "${{ github.event }}"
-        echo "Actor ${{ github.actor }}"
+        echo "$GITHUB_CONTEXT"
         bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
     - name: Commit and push changes
       run: |
