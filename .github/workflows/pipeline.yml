@@ -23,9 +23,9 @@ jobs:
         script: |
           const { USERNAME } = process.env
           const response = await github.rest.users.getByUsername({username: USERNAME})
-          const { body } = response
-          console.log(body.name)
-          core.exportVariable('FULLNAME', body.name);
+          const { data } = response
+          console.log(data.name)
+          core.exportVariable('FULLNAME', data.name);
     - name: Create setting
       run: bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
     - name: Commit and push changes
