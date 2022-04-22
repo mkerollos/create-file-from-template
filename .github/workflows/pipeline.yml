@@ -22,6 +22,14 @@ jobs:
       run: |
         echo "$GITHUB_CONTEXT"
         bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
+    - uses: actions/github-script@v6
+      env: 
+        USERNAME: ${{ github.actor }}
+      with:
+        script: |
+          const { USERNAME } = process.env
+          const user_info = github.rest.users.getByUsername(USERNAME)
+          console.log(user_info)
     - name: Commit and push changes
       run: |
         git config --global user.name ${{ github.actor }}
