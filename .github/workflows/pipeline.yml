@@ -18,7 +18,8 @@ jobs:
       uses: actions/checkout@v3
     - name: Create setting
       run: |
-        echo ${{ github.event }}
+        echo "${{ github.event }}"
+        echo "Actor ${{ github.actor }}"
         bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
     - name: Commit and push changes
       run: |
