@@ -13,7 +13,8 @@ on:
 jobs:
   create-setting:
     runs-on: ubuntu-latest
-
     steps:
+    - name: Check out repository code
+      uses: actions/checkout@v3
     - name: Create setting
       run: bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
