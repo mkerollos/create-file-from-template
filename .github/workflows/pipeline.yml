@@ -19,9 +19,9 @@ jobs:
     - name: Create setting
       run: bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
     - name: Commit and push changes
-        run: |
-          git config --global user.name ${{ github.actor }}
+      run: |
+        git config --global user.name ${{ github.actor }}
 
-          git add -A
-          git commit -m "Created new settings in ${{ github.event.inputs.parent }}/${{ github.event.inputs.folder }}"
-          git push
+        git add -A
+        git commit -m "Created new settings in ${{ github.event.inputs.parent }}/${{ github.event.inputs.folder }}"
+        git push
