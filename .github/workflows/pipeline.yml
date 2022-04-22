@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+    inputs:
+      parent:
+        type: choice
+        description: Parent folder
+        options: 
+        - parent_1
+        - parent_2
+      folder:
+        required: true
+
+jobs:
+  create-setting:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create setting
+      run: bash scripts/create_file_from_template.sh -p ${{ github.event.inputs.parent }} -f ${{ github.event.inputs.folder }}
